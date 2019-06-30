@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Edição de Curso</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>Titulo</ion-label>
+            <ion-input type="text" [(ngModel)]="course.title"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>Preço</ion-label>
+            <ion-input type="text" [(ngModel)]="course.price"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label fixed>Descrição</ion-label>
+            <ion-input type="text" [(ngModel)]="course.description"></ion-input>
+        </ion-item>
+
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="update(course)" type="submit" expand="block">Editar Curso
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="remove(course)" color="danger" type="submit" expand="block">Remover Curso
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-list>
+</ion-content>

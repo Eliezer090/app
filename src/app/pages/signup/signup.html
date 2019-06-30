@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar (click)="voltarLogin()">
+        <ion-buttons slot="start">
+            <ion-icon size="large" name="arrow-back"></ion-icon>
+            <!--<ion-menu-button></ion-menu-button>-->
+        </ion-buttons>
+        <ion-title>Cadastro</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="signup-logo">
+        <img src="assets/img/appicon.svg" alt="Ionic Logo">
+    </div>
+
+    <form #signupForm="ngForm" novalidate>
+        <ion-list lines="none">
+            <ion-item>
+                <ion-label position="stacked" color="primary">E-mail</ion-label>
+                <ion-input [(ngModel)]="signup.username" name="username" type="text" #username="ngModel" required>
+                </ion-input>
+            </ion-item>
+            <ion-text color="danger">
+                <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
+                    E-mail é obrigatório!
+                </p>
+            </ion-text>
+
+            <ion-item>
+                <ion-label position="stacked" color="primary">Digite a Senha</ion-label>
+                <ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" required>
+                </ion-input>
+            </ion-item>
+            <ion-text color="danger">
+                <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+                    Senha é obrigatória!
+                </p>
+            </ion-text>
+
+            <ion-item>
+                <ion-label position="stacked" color="primary">Redigite a Senha</ion-label>
+                <ion-input [(ngModel)]="signup.password2" name="password2" type="password" #password2="ngModel" required>
+                </ion-input>
+            </ion-item>
+            <ion-text color="danger">
+                <p [hidden]="password2.valid || submitted == false" class="ion-padding-start">
+                    Conferência da senha é obrigatória!
+                </p>
+            </ion-text>
+        </ion-list>
+
+        <div class="ion-padding">
+            <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Cadastrar</ion-button>
+        </div>
+    </form>
+</ion-content>

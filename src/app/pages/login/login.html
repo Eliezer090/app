@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <!--<ion-menu-button></ion-menu-button>-->
+        </ion-buttons>
+
+        <ion-title>Login</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="login-logo">
+        <img src="assets/img/appicon.svg" alt="Ionic logo">
+    </div>
+
+    <form #loginForm="ngForm" novalidate>
+        <ion-list>
+            <ion-item>
+                <ion-label position="stacked" color="primary">E-mail</ion-label>
+                <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off" required>
+                </ion-input>
+            </ion-item>
+
+            <ion-text color="danger">
+                <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
+                    E-mail é obrigatório!
+                </p>
+            </ion-text>
+
+            <ion-item>
+                <ion-label position="stacked" color="primary">Senha</ion-label>
+                <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+                </ion-input>
+            </ion-item>
+
+            <ion-text color="danger">
+                <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+                    A senha é origatória!
+                </p>
+            </ion-text>
+        </ion-list>
+
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Entrar</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="onSignup()" color="light" expand="block">Cadastrar</ion-button>
+            </ion-col>
+            <!--<ion-button (click)="cadastrar()" expand="block">Cadastrar</ion-button>-->
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="resetPass(loginForm)" type="submit" expand="block">Esqueci minha senha</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="signInWithGoogle()" expand="block">
+                    <ion-icon name="logo-googleplus"></ion-icon> Entrar com Google</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+
+</ion-content>

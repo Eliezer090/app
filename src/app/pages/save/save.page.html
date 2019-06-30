@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Cursos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-row>
+        <ion-col>
+            <ion-button (click)="uparImg()" type="submit" expand="block">Uploud Img
+            </ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-button (click)="uparImgCortada()" type="submit" expand="block">Uploud Img Cortada</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>Titulo</ion-label>
+            <ion-input type="text" [(ngModel)]="course.title"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>Preço</ion-label>
+            <ion-input type="text" [(ngModel)]="course.price"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label fixed>Descrição</ion-label>
+            <ion-input type="text" [(ngModel)]="course.description"></ion-input>
+        </ion-item>
+
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="save(course)" type="submit" expand="block">Criar Curso
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+    </ion-list>
+    <ion-label>Dados</ion-label>
+    <ion-list>
+        <ion-item>
+            <ion-img [src]="url|async"></ion-img>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item style="cursor: pointer;" *ngFor="let c of courses|async" (click)="gotoSingle(c)">
+            {{c.title}} - {{c.price|currency:"BRL"}} - {{c.description}}
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>Filtro</ion-label>
+            <ion-input type="text" [(ngModel)]="pesq.pesquisa"></ion-input>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="pesquisa(pesq)" type="submit" expand="block">Filtrar Cursos</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-list>
+    <ion-label>Filtrado</ion-label>
+    <ion-list>
+        <ion-item style="cursor: pointer;" *ngFor="let c of
+            coursesFilter|async">
+            {{c.title}} - {{c.price|currency:"BRL"}} - {{c.description}}
+        </ion-item>
+    </ion-list>
+
+</ion-content>
