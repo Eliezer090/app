@@ -46,7 +46,6 @@ export class LoginPage {
         })
     })
   }
-   
 
   async onLogin(form: NgForm) {
     this.submitted = true;
